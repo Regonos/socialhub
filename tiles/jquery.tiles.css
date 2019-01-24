@@ -1,0 +1,51 @@
+.social-hub{
+    font-family: 'Arial', serif;
+}
+
+.social-hub * {
+    margin:0;
+}
+
+.color-invert{
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+
+#social-icon-face .front.face{
+    background: no-repeat center;
+}
+
+#social-icon-face .back.face{
+  color: white;
+  text-align: center;
+vertical-align: middle;
+text-decoration: none;
+}
+
+.social-icon{
+	float:left;
+}
+
+#social-icon-face {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.2s linear;
+}
+
+.social-icon:hover #social-icon-face {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.face.back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+}
