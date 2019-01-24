@@ -1,30 +1,42 @@
-function shuffleElements(parentElement){
+function shuffleElements(parentElement) {
     var divs = parentElement.children();
     while (divs.length) {
         parentElement.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
     }
 }
 
+function randomColor() {
+    return '#'+Math.random().toString(16).slice(-6);
+}
+
+function defaultIfUndefined(value, defaultValue) {
+    return value === undefined ? defaultValue : value;
+}
+
+//DEFAULT VALUES SECTION
+const DEFAULT_TILE_SIZE = "128px";
+const DEFAULT_RANDOMIZATION = false;
+const DEFAULT_ICON = "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg";
+//END OF DEFAULT VALUES SECTION
+
 $(document).ready(function () {
-    console.log("Document ready!");
+    console.log("Socialhub is ready! :)");
 
     $(".social-hub").each(function () {
+        var tileSize = defaultIfUndefined($(this).attr("tile-size"), DEFAULT_TILE_SIZE);
+        var randomize = defaultIfUndefined($(this).attr("randomize-tiles"), DEFAULT_RANDOMIZATION);
 
-        var columns = $(this).attr("columns");
-        var tileSize = $(this).attr("tile-size");
-        var randomize = $(this).attr("randomize-tiles");
-
-        if(randomize) {
+        if (randomize) {
             shuffleElements($(this));
         }
 
         $(this).removeAttr("columns")
             .removeAttr("tile-size")
-            .css({'width': 'calc(' + tileSize + '*' + columns + ')'});
+            .css({'width': '100%'});
 
         $(this).children(".tile").each(function () {
-            var imageLocation = $(this).attr("front-face-image");
-            var tileColor = $(this).attr("tile-color")
+            var imageLocation = defaultIfUndefined($(this).attr("front-face-image"), DEFAULT_ICON);
+            var tileColor = defaultIfUndefined($(this).attr("tile-color"), randomColor());
 
             var frontFace = $('<p class="front face color-invert"></p>')
                 .css({
