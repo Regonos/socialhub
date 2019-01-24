@@ -26,3 +26,8 @@ tile-color | random color | all css-possible color notations | Specifies the col
 <a class="tile" front-face-image="icons/email.svg" tile-color="#2ECC40" href="mailto:igor.maculewicz@gmail.com">E-mail</a>
 </div>
 ```
+
+**Demo images:**
+
+![Demo1](assets/demo1.png)
+![Demo2](assets/demo2.png)
